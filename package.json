@@ -1,0 +1,24 @@
+{
+  "name": "vaccinationrecords",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuillermoAlexis/vaccinationRecords.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GuillermoAlexis/vaccinationRecords/issues"
+  },
+  "homepage": "https://github.com/GuillermoAlexis/vaccinationRecords#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
