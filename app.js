@@ -1,6 +1,9 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-
+if (process.env.NODE_ENV !== 'production'){
+    require('dotenv').config();
+}
+    
 const app = express();
 
 /*POST /login -> Capturar el “email” y “password” para iniciar sesion. En caso de que
@@ -14,7 +17,8 @@ app.post("/api/login", (req, res) => {
         password: "passTest"
     }
 
-    jwt.sign({user: user}, 'key', {expiresIn: '60s'}, (err, token) => {
+    console.log(process.env.TIME_OUT);
+    jwt.sign({user: user}, 'key', {expiresIn: process.env.TIME_OUT}, (err, token) => {
         res.json({
             token: token
         });
