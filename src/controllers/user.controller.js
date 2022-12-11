@@ -27,7 +27,7 @@ las credenciales sean correctas devolver un JWT con vencimiento definido en vari
 de entorno.
 */
 /*
-const addUser = async (req, res) => {
+const addSession = async (req, res) => {
     try {
         const { name, email, password} = req.body;
         if ( email === undefined || password === undefined) {
@@ -46,5 +46,5 @@ const addUser = async (req, res) => {
 
 export const methods = {
     addUser
-    /*login*/
+    /*addSession*/
 };
