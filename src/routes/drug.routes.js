@@ -5,5 +5,6 @@ const router = Router();
 
 router.post("/", drugController.addDrug);
 router.put("/:id", drugController.updateDrug);
+router.get("/", drugController.getDrugs);
 
 export default router;
