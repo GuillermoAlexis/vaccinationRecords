@@ -16,8 +16,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Routes
-app.use("/api", userRoutes);
-app.use("/api/drug", drugRoutes);
-app.use("/api/vaccination", vaccinationRoutes);
+app.use("/", userRoutes);
+app.use("/drug", drugRoutes);
+app.use("/vaccination", vaccinationRoutes);
 
 export default app;
