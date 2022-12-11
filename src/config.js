@@ -8,5 +8,5 @@ export default {
     user: process.env.USER || "",
     password: process.env.PASSWORD || "",
     port: process.env.PORT || "",
-    time_out: process.env.PORT || ""
+    time_out: process.env.TIME_OUT || ""
 };
