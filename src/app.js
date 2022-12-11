@@ -17,7 +17,20 @@ app.use(express.json());
 
 // Routes
 app.use("/", userRoutes);
-app.use("/drug", drugRoutes);
-app.use("/vaccination", vaccinationRoutes);
+app.use("/drug", checkToken, drugRoutes);
+app.use("/vaccination", checkToken, vaccinationRoutes);
+
+function checkToken(req, res, next){
+    const bearer = req.headers['authorization'];
+
+    if (typeof bearer !== 'undefined') {
+        const token = bearer.split(" ")[1];
+        req.token = token;
+        next();      
+    }else{
+        //acceso prohibido
+        res.sendStatus(403);
+    }
+}
 
 export default app;
