@@ -57,8 +57,24 @@ const getDrugs = async (req, res) => {
         res.send(error.message);
     }
 };
+/**
+ * DELETE /drugs/:id -> Eliminar instancia de “drug”.
+ */
+const deleteDrug = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const connection = await getConnection();
+        const result = await connection.query("DELETE FROM drug WHERE id_drug = ?", id);
+        res.json(result);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+};
+
 export const methods = {
     addDrug,
     updateDrug,
-    getDrugs
+    getDrugs,
+    deleteDrug
 };
