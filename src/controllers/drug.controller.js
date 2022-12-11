@@ -44,7 +44,21 @@ const updateDrug = async (req, res) => {
     }
 };
 
+/**
+ * GET /drugs -> Obtener todas las instancias de “drug”.
+ */
+const getDrugs = async (req, res) => {
+    try {
+        const connection = await getConnection();
+        const result = await connection.query("SELECT id_drug, name, approved, min_dose, max_dose, available_at FROM drug");
+        res.json(result);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+};
 export const methods = {
     addDrug,
-    updateDrug
+    updateDrug,
+    getDrugs
 };
