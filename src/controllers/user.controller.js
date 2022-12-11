@@ -29,34 +29,23 @@ de entorno.
 */
 const newSession = async (req, res) => {
     try {   
-        /*const { email, password } = req.body;
+        const { email, password } = req.body;
 
         if ( email === undefined || password === undefined) {
             res.status(400).json({ message: "Bad Request. Please fill all field." });
         }
-/*
-        const sesion_validations = await connection.query("SELECT * FROM user WHERE email = ?", email);
-
-        const drug = { name, approved, min_dose, max_dose, available_at };
         const connection = await getConnection();
-        const result = await connection.query("UPDATE drug SET ? WHERE id_drug = ?", [drug, id]);
-        res.json(result);    
-
-*/
-            const user = {
-                id: 1,
-                name: "testName",
-                email: "test@email.com",
-                password: "passTest"
-            }
-        
-            console.log(config.time_out);
-            jwt.sign({user: user}, 'key', {expiresIn: config.time_out}, (err, token) => {
+        const user_session = await connection.query("SELECT * FROM user WHERE email = ? AND password=?", [email, password]);
+        if (user_session[0]){ 
+            jwt.sign({user: user_session}, 'key', {expiresIn: config.time_out}, (err, token) => {
                 res.json({
                     token: token
                 });
             });
-
+        }else{
+            res.json({ message: "User not found" });
+        }
+        
     } catch (error) {
         res.status(500);
         res.send(error.message);
