@@ -1,7 +1,7 @@
 import { getConnection } from "./../database/database";
 
 /**
- *  POST /drugs -> Crear instancia de “drug” entregando los campos de “name”,
+ * POST /drugs -> Crear instancia de “drug” entregando los campos de “name”,
 “approved”, “min_dose”, “max_dose”, “available_at”.
 */
 const addDrug = async (req, res) => {
@@ -10,6 +10,7 @@ const addDrug = async (req, res) => {
         if ( name === undefined || approved === undefined || min_dose === undefined || max_dose === undefined || available_at === undefined) {
             res.status(400).json({ message: "Bad Request. Please fill all field." });
         }
+
         const drug = { name, approved, min_dose, max_dose, available_at };
         const connection = await getConnection();
         await connection.query("INSERT INTO drug SET ?", drug);
@@ -22,15 +23,28 @@ const addDrug = async (req, res) => {
 };
 
 /**
- *  const getDrugs = async (req, res) => {
-    const connection = await getConnection();
-    const result = await connection.query("SELECT * FROM drug");
-    console.log(result);
-    res.json(result)
-
-};
+ * PUT /drugs/:id -> Ruta para poder actualizar instancia de “drug”.
  */
+const updateDrug = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, approved, min_dose, max_dose, available_at } = req.body;
+
+        if ( name === undefined || approved === undefined || min_dose === undefined || max_dose === undefined || available_at === undefined) {
+            res.status(400).json({ message: "Bad Request. Please fill all field." });
+        }
+
+        const drug = { name, approved, min_dose, max_dose, available_at };
+        const connection = await getConnection();
+        const result = await connection.query("UPDATE drug SET ? WHERE id_drug = ?", [drug, id]);
+        res.json(result);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+};
 
 export const methods = {
-    addDrug
+    addDrug,
+    updateDrug
 };
