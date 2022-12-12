@@ -1,6 +1,6 @@
-const jwt = require("jsonwebtoken");
-import { getConnection } from "./../database/database";
-import config from "./../config";
+import jwt from 'jsonwebtoken';
+import { getConnection } from "./../database/database.js";
+import config from "./../config.js";
 /**
  * POST /signup -> Crear instancia de “user” entregando los campos de “name”,
 “email’ y “password”.

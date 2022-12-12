@@ -1,7 +1,6 @@
-import { getConnection } from "./../database/database";
-const moment = require('moment');
-const jwt = require("jsonwebtoken");
-
+import { getConnection } from "./../database/database.js";
+import moment from 'moment';
+import jwt from 'jsonwebtoken';
 /**
  *  POST /vaccination -> Crear instancia de “vaccination” entregando los campos de
 “name”, “drug_id”, “dose”, “date”. Se debe validar que la dosis este dentro de lo
