@@ -21,12 +21,9 @@ Para ejecutar la aplicacion
 Para ejecutar test
 ### `npm run test`
 
-Para ejecutar test
-### `npm run test`
-
 Base de datos mysql en docker:
 
-Primero que todo tener instalado docker para posteriormente crear un contenedor de mysql de la siguiente manera
+Para este paso se requiere tener instalado docker, para posteriormente, crear un contenedor de mysql de la siguiente manera:
 
 ### docker run -d -p 33061:3306 --name mysql57 -e MYSQL_ROOT_PASSWORD=secret mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
