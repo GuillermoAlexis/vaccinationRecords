@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { methods as drugController } from "../controllers/drug.controller";
+import { methods as drugController } from "../controllers/drug.controller.js";
 
 const router = Router();
 

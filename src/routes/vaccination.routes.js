@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { methods as vaccinationController } from "../controllers/vaccination.controller";
+import { methods as vaccinationController } from "../controllers/vaccination.controller.js";
 
 const router = Router();
 

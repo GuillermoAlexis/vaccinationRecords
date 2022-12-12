@@ -2,9 +2,9 @@ import express from "express";
 import morgan from "morgan";
 
 // Routes
-import userRoutes from "./routes/user.routes";
-import drugRoutes from "./routes/drug.routes";
-import vaccinationRoutes from "./routes/vaccination.routes";
+import userRoutes from "./routes/user.routes.js";
+import drugRoutes from "./routes/drug.routes.js";
+import vaccinationRoutes from "./routes/vaccination.routes.js";
 
 const app = express();
 
